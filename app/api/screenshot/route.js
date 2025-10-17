@@ -30,10 +30,10 @@ export async function GET(request) {
   let browser;
   try {
     const isVercel = !!process.env.VERCEL_ENV;
-    let puppeteer;
-    let launchOptions = {
-      headless: true,
-    };
+    let puppeteer,
+      launchOptions = {
+        headless: true,
+      };
 
     if (isVercel) {
       const chromium = (await import("@sparticuz/chromium")).default;
@@ -69,4 +69,3 @@ export async function GET(request) {
     }
   }
 }
-
