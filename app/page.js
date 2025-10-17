@@ -4,9 +4,9 @@ import { useState } from "react";
 
 export default function HomePage() {
   const [url, setUrl] = useState("");
-  const [screenshot, setScreenshot] = useState<string | null>(null);
+  const [screenshot, setScreenshot] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   const handleScreenshot = async () => {
     if (!url) {
@@ -89,3 +89,4 @@ export default function HomePage() {
     </main>
   );
 }
+

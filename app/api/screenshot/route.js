@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const urlParam = searchParams.get("url");
   if (!urlParam) {
@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
   }
 
   // Validate the URL is a valid HTTP/HTTPS URL
-  let parsedUrl: URL;
+  let parsedUrl;
   try {
     parsedUrl = new URL(inputUrl);
     if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
@@ -30,10 +30,10 @@ export async function GET(request: NextRequest) {
   let browser;
   try {
     const isVercel = !!process.env.VERCEL_ENV;
-    let puppeteer: any,
-      launchOptions: any = {
-        headless: true,
-      };
+    let puppeteer;
+    let launchOptions = {
+      headless: true,
+    };
 
     if (isVercel) {
       const chromium = (await import("@sparticuz/chromium")).default;
@@ -69,3 +69,4 @@ export async function GET(request: NextRequest) {
     }
   }
 }
+
